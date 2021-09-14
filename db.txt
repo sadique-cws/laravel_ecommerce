@@ -1,0 +1,19 @@
+User
+1. isAdmin - boolean
+2. Category 
+	id, cat_title, description, parent_id
+3. Product
+	id, title, price, discount_price (nullable), category_id, descr, brand, img1, img2(nullable), status
+4. Address
+	name (nullable, contact, area, user_id (fk), street, city, state, pincode, type (office, home))
+5. Coupon 
+	id, code, amount, status
+6. Order
+	id, user_id, ordered, address_id (nullable), coupon (nullable)
+7. OrderItem
+	id, user_id, product_id, order_id, ordered, qty
+    
+
+step 2
+
+	add 2 more Controllers AdminController,HomeController;
