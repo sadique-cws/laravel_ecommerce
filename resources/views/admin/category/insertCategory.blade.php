@@ -9,9 +9,12 @@
                     @csrf
                     <div class="mb-3">
                         <label for="">parent_id</label>
-                        <section type="text" name="parent_id" class="form-select">
-                            <option value="NULL">Main Category</option>
-                        </section>
+                        <select type="text" name="parent_id" class="form-select">
+                            <option value="">Main Category</option>
+                            @foreach ($main_cat as $cat)
+                            <option value="{{$cat->id}}">{{$cat->cat_title}}</option>
+                        @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="">Cat title</label>

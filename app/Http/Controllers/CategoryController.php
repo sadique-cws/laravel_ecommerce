@@ -15,7 +15,8 @@ class CategoryController extends Controller
     }
 
     public function create(){
-        return view("admin.category.insertCategory");
+        $data["main_cat"] = Category::where("parent_id",NULL)->get();
+        return view("admin.category.insertCategory",$data);
     }
     public function store(Request $request)
     {
@@ -38,7 +39,10 @@ class CategoryController extends Controller
     }
 
     public function edit($id){
-        return view('categoryEdit',["category"=> Category::find($id)]);
+        return view('admin.category.categoryEdit',[
+            "category"=> Category::find($id),
+            "main_cat" => Category::where("parent_id","NULL")->get()
+        ]);
     }
 
     public function update(Request $request, $id)
