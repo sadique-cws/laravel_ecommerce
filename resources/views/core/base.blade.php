@@ -52,7 +52,7 @@
     
           <!-- Brand -->
           <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-            <strong class="blue-text">MDB</strong>
+            <strong class="blue-text">Ecom</strong>
           </a>
     
           <!-- Collapse -->
@@ -65,48 +65,26 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
             <!-- Left -->
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
                 <a class="nav-link waves-effect" href="#">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
+                <a class="nav-link waves-effect" href="">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-                  target="_blank">Free download</a>
+                <a class="nav-link waves-effect" href="{{route('login')}}">Login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
-                  tutorials</a>
+                <a class="nav-link waves-effect" href="{{route('register')}}">Register</a>
               </li>
-            </ul>
-    
-            <!-- Right -->
-            <ul class="navbar-nav nav-flex-icons">
               <li class="nav-item">
                 <a class="nav-link waves-effect">
                   <span class="badge red z-depth-1 mr-1"> 1 </span>
                   <i class="fas fa-shopping-cart"></i>
                   <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
-                  target="_blank">
-                  <i class="fab fa-github mr-2"></i>MDB GitHub
                 </a>
               </li>
             </ul>
@@ -123,18 +101,7 @@
 
       <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-        <!--Call to action-->
-        <div class="pt-4">
-          <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-            role="button">Download MDB
-            <i class="fas fa-download ml-2"></i>
-          </a>
-          <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-            free tutorial
-            <i class="fas fa-graduation-cap ml-2"></i>
-          </a>
-        </div>
-        <!--/.Call to action-->
+       
     
         <hr class="my-4">
     
