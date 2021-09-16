@@ -41,7 +41,7 @@ class CategoryController extends Controller
     public function edit($id){
         return view('admin.category.categoryEdit',[
             "category"=> Category::find($id),
-            "main_cat" => Category::where("parent_id","NULL")->get()
+            "main_cat" => Category::where("parent_id",NULL)->get()
         ]);
     }
 

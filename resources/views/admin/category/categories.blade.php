@@ -2,11 +2,13 @@
 
 
 @section('content')
-    <div class="container-fluid">
-        <div class="container">
-            <a href="{{route('category.create')}}" class="btn btn-success">Add Category</a>
+    <div class="container-fluid mt-4">
+        <div class="container mb-2">
+            <a href="{{route('category.create')}}" class="btn btn-success float-end">Add Category</a>
         </div>
-        <table class="table table-bordered">
+        <br>
+        <br>
+        <table class="table table-bordered mt-2">
             <tr>
                 <th>id</th>
                 <th>Title</th>
@@ -20,13 +22,13 @@
                     <td>{{$category->cat_title}}</td>
                     <td>{{$category->description}}</td>
                     <td>{{$category->parent_id}}</td>
-                    <td>
-                        <form action="{{route('category.destroy',['category'=>$category->id])}}" method="POST">
+                    <td class="d-flex">
+                        <form class="me-2" action="{{route('category.destroy',['category'=>$category->id])}}" method="POST">
                             @method("delete")
                             @csrf
                             <input type="submit" class="btn btn-danger" value="X">
                         </form>
-                        <a href="{{route('category.edit',['category'=>$category->id])}}" class="btn btn-success">Edit</a>
+                        <a href="{{route('category.edit',['category'=>$category->id])}}" class="btn btn-success ">Edit</a>
                     </td>
                 </tr>
             @endforeach
