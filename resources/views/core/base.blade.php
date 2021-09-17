@@ -74,14 +74,26 @@
               <li class="nav-item">
                 <a class="nav-link waves-effect" href="">Profile</a>
               </li>
+             @auth
+                 
+             @endauth
+             <li class="nav-item">
+              <form method="POST" action="{{route('logout')}}">
+                @csrf
+                <button type="" class="nav-link bg-white border-0 waves-effect" href="{{route('login')}}">Logout</button>
+              </form>
+            </li>
+           
+             @guest
+             <li class="nav-item">
+              <a class="nav-link waves-effect" href="{{route('login')}}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="{{route('register')}}">Register</a>
+            </li>
+             @endguest
               <li class="nav-item">
-                <a class="nav-link waves-effect" href="{{route('login')}}">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link waves-effect" href="{{route('register')}}">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link waves-effect">
+                <a class="nav-link waves-effect" href="{{route('cart')}}">
                   <span class="badge red z-depth-1 mr-1"> 1 </span>
                   <i class="fas fa-shopping-cart"></i>
                   <span class="clearfix d-none d-sm-inline-block"> Cart </span>

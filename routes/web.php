@@ -29,9 +29,20 @@ Route::resource("order",OrderController::class);
 Route::resource("order-item",OrderItemController::class);
 
 
-Route::get("/",[HomeController::class,"home"]);
-Route::get("/checkout",[HomeController::class,"checkout"]);
-Route::get("/view",[HomeController::class,"product_view"]);
+Route::get("/",[HomeController::class,"home"])->name("home");
+Route::get("/search",[HomeController::class,"search"])->name('search');
+Route::get("/checkout",[HomeController::class,"checkout"])->name('checkout');
+Route::get("/cart",[HomeController::class,"cart"])->name('cart');
+Route::get("/view/{id}/",[HomeController::class,"product_view"])->name('view');
+
+
+// auth required
+Route::middleware('auth')->group(function () {
+    Route::post("/add-to-cart/{id}",[HomeController::class, "add_to_cart"])->name("addCart");
+});
+
+
+
 
 // ---------------------------------------------- admin work ----------------- 
 Route::get('/dashboard', function () {
