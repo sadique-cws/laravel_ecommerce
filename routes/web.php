@@ -31,7 +31,6 @@ Route::resource("order-item",OrderItemController::class);
 
 Route::get("/",[HomeController::class,"home"])->name("home");
 Route::get("/search",[HomeController::class,"search"])->name('search');
-Route::get("/checkout",[HomeController::class,"checkout"])->name('checkout');
 Route::get("/cart",[HomeController::class,"cart"])->name('cart');
 Route::get("/view/{id}/",[HomeController::class,"product_view"])->name('view');
 
@@ -39,12 +38,19 @@ Route::get("/view/{id}/",[HomeController::class,"product_view"])->name('view');
 // auth required
 Route::middleware('auth')->group(function () {
     Route::post("/add-to-cart/{id}",[HomeController::class, "add_to_cart"])->name("addCart");
+    Route::post("/add-coupon",[HomeController::class, "addCoupon"])->name("addCoupon");
+    Route::post("/store-address",[HomeController::class, "storeAddress"])->name("storeAddress");
+    Route::get("/remove-coupon",[HomeController::class, "removeCoupon"])->name("removeCoupon");
+    Route::get("/checkout",[HomeController::class,"checkout"])->name('checkout');
+    Route::get("/payment",[HomeController::class,"payment"])->name('payment');
+    Route::get("/remove-from-cart/{id}",[HomeController::class, "remove_from_cart"])->name("removeCart");
+    Route::get("/remove-item-from-cart/{id}",[HomeController::class, "removeItemFromCart"])->name("removeItemCart");
 });
 
 
 
 
-// ---------------------------------------------- admin work ----------------- 
+// ---------------------------------------------- admin work -----------------
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
