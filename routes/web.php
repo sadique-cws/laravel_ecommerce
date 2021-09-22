@@ -9,7 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\PaytmController;
 
 // Verb	    URI		        Action	Route Name
 // GET	    /photos		    index	photos.index
@@ -45,6 +45,9 @@ Route::middleware('auth')->group(function () {
     Route::get("/payment",[HomeController::class,"payment"])->name('payment');
     Route::get("/remove-from-cart/{id}",[HomeController::class, "remove_from_cart"])->name("removeCart");
     Route::get("/remove-item-from-cart/{id}",[HomeController::class, "removeItemFromCart"])->name("removeItemCart");
+    //payment routes
+    Route::get("/payment/now",[PaytmController::class,"order"])->name('paynow');
+    Route::post("/payment/callback",[PaytmController::class,"paymentCallback"])->name('paymentCallback');
 });
 
 

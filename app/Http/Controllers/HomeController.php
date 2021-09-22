@@ -224,7 +224,7 @@ class HomeController extends Controller
 
     }
     public function payment(){
-        echo "success";
+        return redirect()->route("paynow");
     }
 
     public function cart(){
