@@ -5,7 +5,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <form action="{{route('category.update',["category"=>$category->id])}}" method="POST">
+                <form action="{{route('category.update',['category'=>$category->id])}}" method="POST">
                     @method("put")
                     @csrf
                     <div class="mb-3">
@@ -28,7 +28,7 @@
                     <div class="mb-3">
                         <input type="submit" class="btn btn-success w-100">
                     </div>
-                    
+
                 </form>
             </div>
         </div>

@@ -9,6 +9,8 @@
         <!-- Heading -->
         <h2 class="my-5 h2 text-center">Checkout form</h2>
 
+        @if (count($order->orderitem) > 0)
+
         <!--Grid row-->
         <div class="row">
 
@@ -23,6 +25,9 @@
                 </h4>
 
                 <!-- Cart -->
+
+
+
                 <ul class="list-group mb-3 z-depth-1">
 
                 @php
@@ -115,7 +120,7 @@
                 @endif
 
                 <div class="row">
-                <a href="" class="col btn-success btn">Go back</a>
+                <a href="/" class="col btn-success btn">Go back</a>
                 <a href="{{route('checkout')}}" class="col btn-warning btn">Checkout</a>
             </div>
             </div>
@@ -123,6 +128,14 @@
 
         </div>
         <!--Grid row-->
+        @else
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Sorry Cart is Empty</h2>
+                                <a href="/" class="btn btn-success">Add Products</a>
+                            </div>
+                        </div>
+        @endif
 
     </div>
 </main>

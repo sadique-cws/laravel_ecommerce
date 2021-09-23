@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="card-footer">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="saveAddress" value="{{$add->id}}" id="flexRadioDefault1">
+                                        <input onchange="this.form.submit()" class="form-check-input" type="radio" name="saveAddress" value="{{$add->id}}" id="flexRadioDefault1">
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             Select This Address
                                         </label>

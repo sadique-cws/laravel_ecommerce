@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 class PaytmController extends Controller
 {
     public function order()
@@ -35,6 +35,7 @@ class PaytmController extends Controller
         $pay->status = NULL;
         $pay->txndate = NULL;
         $pay->paymentmode = NULL;
+        $pay->order_id = $order->id;
         $pay->save();
 
 
@@ -60,17 +61,27 @@ class PaytmController extends Controller
         $pay->paymentmode = $response['PAYMENTMODE'];
         $pay->save();
 
-        // if($transaction->isSuccessful()){
 
-        // }else if($transaction->isFailed()){
+
+
+        if($transaction->isSuccessful()){
+            $user = Auth::user();
+            $order = Order::where([['user_id',$user->id],["ordered",false]])->first();
+            $order->ordered = true;
+            foreach($order->orderitem as $oi){
+                $oi->ordered = true;
+                $oi->save();
+            }
+            $order->save();
+
+        }
+        // else if($transaction->isFailed()){
         //   //Transaction Failed
         // }else if($transaction->isOpen()){
         //   //Transaction Open/Processing
         // }
-       echo "<br>" . $transaction->getResponseMessage(); //Get Response Message If Available
-        //get important parameters via public methods
-        echo "<br>". $transaction->getOrderId(); // Get order id
-        echo "<br>". $transaction->getTransactionId(); // Get transaction id
+    //    todo redirect to myorder page
+        return redirect()->route('my.order');
 
 
     }

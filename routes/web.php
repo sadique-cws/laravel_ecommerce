@@ -31,12 +31,13 @@ Route::resource("order-item",OrderItemController::class);
 
 Route::get("/",[HomeController::class,"home"])->name("home");
 Route::get("/search",[HomeController::class,"search"])->name('search');
-Route::get("/cart",[HomeController::class,"cart"])->name('cart');
 Route::get("/view/{id}/",[HomeController::class,"product_view"])->name('view');
 
 
 // auth required
 Route::middleware('auth')->group(function () {
+    Route::get("/cart",[HomeController::class,"cart"])->name('cart');
+    Route::get("/my-order",[HomeController::class,"myOrder"])->name('my.order');
     Route::post("/add-to-cart/{id}",[HomeController::class, "add_to_cart"])->name("addCart");
     Route::post("/add-coupon",[HomeController::class, "addCoupon"])->name("addCoupon");
     Route::post("/store-address",[HomeController::class, "storeAddress"])->name("storeAddress");

@@ -17,12 +17,17 @@ class HomeController extends Controller
     public function home(){
         $data['categories'] = Category::where("parent_id",NULL)->get();
         $data['products'] = Product::all();
+        $data['order'] = Order::where([['user_id',Auth::id()],["ordered",false]])->get();
+        $data['count'] = count($data['order'][0]->orderitem);
+
 
         return view("core.home-page",$data);
     }
 
     public function search(Request $req){
         $data['categories'] = Category::where("parent_id",NULL)->get();
+        $data['order'] = Order::where([['user_id',Auth::id()],["ordered",false]])->get();
+        $data['count'] = count($data['order']->orderitem);
 
         if ($req->method() == "GET" && $req->search != ""){
             $search = $req->search;
@@ -229,19 +234,29 @@ class HomeController extends Controller
 
     public function cart(){
         $data['order'] = Order::where([['user_id',Auth::id()],["ordered",false]])->first();
+        $data['count'] = count($data['order']->orderitem);
         return view("core.order_summary",$data);
+    }
+    public function myOrder(){
+        $data['order'] = Order::where([['user_id',Auth::id()],["ordered",true]])->get();
+        $data['cart'] = Order::where([['user_id',Auth::id()],["ordered",false]])->get();
+        $data['count'] = count($data['cart']->orderitem);
+        return view("core.my-orders",$data);
     }
 
     public function checkout(){
         $id = Auth::id();
         $data['address']  = Address::where('user_id',$id)->get();
+        $data['order'] = Order::where([['user_id',Auth::id()],["ordered",false]])->get();
+        $data['count'] = count($data['order']->orderitem);
         return view("core.checkout-page",$data);
     }
 
     public function product_view(Request $req,$id){
         $data['product'] = Product::find($id);
-        // $data['product'] = DB::table('products')->where('id',$id)->first();
-        return view("core.product-page",$data);
+        $data['order'] = Order::where([['user_id',Auth::id()],["ordered",false]])->get();
+        $data['count'] = count($data['order'][0]->orderitem);
+      return view("core.product-page",$data);
     }
 
 }

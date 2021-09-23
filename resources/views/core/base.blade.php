@@ -95,7 +95,11 @@
              @endguest
               <li class="nav-item">
                 <a class="nav-link waves-effect" href="{{route('cart')}}">
-                  <span class="badge red z-depth-1 mr-1"> 1 </span>
+                  @if($count > 0)
+                  <span class="badge red z-depth-1 mr-1">
+                      {{ $count }}
+                 </span>
+                 @endif
                   <i class="fas fa-shopping-cart"></i>
                   <span class="clearfix d-none d-sm-inline-block"> Cart </span>
                 </a>
