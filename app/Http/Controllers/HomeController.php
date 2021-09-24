@@ -18,8 +18,9 @@ class HomeController extends Controller
         $data['categories'] = Category::where("parent_id",NULL)->get();
         $data['products'] = Product::all();
         $data['order'] = Order::where([['user_id',Auth::id()],["ordered",false]])->get();
-        $data['count'] = count($data['order'][0]->orderitem);
-
+        if(count($data['order']) > 0){
+            $data['count'] = count($data['order'][0]->orderitem);
+        }
 
         return view("core.home-page",$data);
     }
@@ -255,7 +256,9 @@ class HomeController extends Controller
     public function product_view(Request $req,$id){
         $data['product'] = Product::find($id);
         $data['order'] = Order::where([['user_id',Auth::id()],["ordered",false]])->get();
-        $data['count'] = count($data['order'][0]->orderitem);
+        if(count($data['order'])>0){
+            $data['count'] = count($data['order'][0]->orderitem);
+        }
       return view("core.product-page",$data);
     }
 
